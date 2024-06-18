@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Category;
 use App\Models\Paket;
 use Illuminate\Http\Request;
 
@@ -28,10 +29,12 @@ class BookingController extends Controller
      */
     public function create()
     {
-        $namapaket = Paket::all()->groupBy('name');
         $paket = Paket::all();
+        $namapaket = Paket::all()->groupBy('name');
+        $category = Category::all();
+        $namacategory = Category::all()->groupBy('namapaket');
 
-        return view('booking.create', compact('paket', 'namapaket'));
+        return view('booking.create', compact('paket', 'namapaket', 'category', 'namacategory'));
     }
 
     /**

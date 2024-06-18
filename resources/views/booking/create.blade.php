@@ -56,34 +56,30 @@
             </div>
 
             <div class="mb-2">
-                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
-                <select id="countries" name="paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>- Pilih Paket -</option>
+                <label for="pakets" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
+                <select id="pakets" name="paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected>- Pilih Paket -</option>
                     @foreach ($namapaket as $name => $packs)
-                    <option value="{{ $name }}">{{ $name }}</option>
+                    <option value="{{ $name }}" data-image="/assets/images/paket/{{ $packs[0]->image }}">{{ $name }}</option>
                     @endforeach
                 </select>
             </div>
 
             <div class="mb-2 flex gap-4">
-                <div class="">
-                    <img class="h-[500px] max-w-lg" src="/assets/images/contoh-package.jpg" alt="image description">
+                <div id="package-image-container" class="flex flex-col">
+                    <!-- Default image -->
+                    <img id="package-image" class="h-[500px] max-w-lg" src="/assets/images/contoh-package.jpg" alt="image description">
                 </div>
                 <div class="flex flex-col gap-8">
-                    <h2 class="font-bold text-2xl">Friendly Package</h2>
+                    @foreach ($namacategory as $namecat => $cat)
+                    <h2 class="font-bold text-2xl" id="titlePaket">{{$namecat}}</h2>
+                    @endforeach
+                    @foreach ($category as $cat)
                     <div class="flex items-center">
-                        <input id="couple" type="radio" value="Couple Package" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="couple" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Couple Package</label>
+                        <input id="{{$cat->namacategory}}" type="radio" value="{{$cat->namacategory}}" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="{{$cat->namacategory}}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$cat->namacategory}}</label>
                     </div>
-                    <div class="flex items-center">
-                        <input id="friends" type="radio" value="Friends Package" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="friends" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Friends Package</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input id="bestie" type="radio" value="Bestie Package" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="bestie" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bestie Package</label>
-                    </div>
-
+                    @endforeach
                 </div>
             </div>
 
@@ -95,5 +91,30 @@
         </div>
     </form>
 </div>
+
+<script>
+    // Ambil elemen-elemen yang diperlukan
+    const selectElement = document.getElementById('pakets');
+    const imageElement = document.getElementById('package-image');
+    const titleElement = document.getElementById('titlePaket');
+
+    // Tambahkan event listener ke select element
+    selectElement.addEventListener('change', function() {
+        // Dapatkan nilai dan teks dari opsi yang dipilih
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const selectedValue = selectedOption.value;
+        const selectedText = selectedOption.textContent;
+
+        // Perbarui teks judul dengan teks yang sesuai
+        titleElement.textContent = selectedText;
+
+        // Dapatkan URL gambar yang sesuai dengan opsi yang dipilih
+        const imageUrl = selectedOption.getAttribute('data-image');
+
+        // Perbarui sumber gambar dengan URL yang sesuai
+        imageElement.src = imageUrl;
+    });
+</script>
+
 
 @endsection

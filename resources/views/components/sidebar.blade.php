@@ -9,17 +9,17 @@
             <i class="fas fa-tachometer-alt mr-3"></i>
             Dashboard
         </a>
-        <a href="{{ route('booking.index') }}" class="flex items-center {{ Request::is('booking') || Request::is('booking/create') || Request::is('booking/*/edit') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
-            <i class="fa fa-address-book mr-3" aria-hidden="true"></i>
-            Booking
-        </a>
         <a href="{{ route('paket.index') }}" class="flex items-center {{ Request::is('paket') || Request::is('paket/create') || Request::is('paket/*/edit') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
-            <i class="fas fa-table mr-3"></i>
+            <i class="fa fa-archive mr-3"></i>
             Paket
         </a>
         <a href="{{ route('category.index') }}" class="flex items-center {{ Request::is('category') || Request::is('category/create') || Request::is('category/*/edit') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
-            <i class="fas fa-table mr-3"></i>
+            <i class="fa fa-th-large mr-3"></i>
             Category
+        </a>
+        <a href="{{ route('booking.index') }}" class="flex items-center {{ Request::is('booking') || Request::is('booking/create') || Request::is('booking/*/edit') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
+            <i class="fa fa-address-book mr-3"></i>
+            Booking
         </a>
     </nav>
     <!-- <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">

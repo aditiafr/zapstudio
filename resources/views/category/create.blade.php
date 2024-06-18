@@ -28,8 +28,8 @@
 
             <div class="mb-2">
                 <label for="namapaket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
-                <select id="namapaket" name="namapaket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>- Pilih Paket -</option>
+                <select id="namapaket" name="namapaket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" require>
+                    <option value="" selected>- Pilih Paket -</option>
                     @foreach ($namapaket as $name => $packs)
                     <option value="{{ $name }}">{{ $name }}</option>
                     @endforeach
