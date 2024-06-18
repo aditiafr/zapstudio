@@ -10,7 +10,7 @@
             Dashboard
         </a>
         <a href="{{ route('booking.index') }}" class="flex items-center {{ Request::is('booking') || Request::is('booking/create') || Request::is('booking/*/edit') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
-            <i class="fas fa-table mr-3"></i>
+            <i class="fa fa-address-book mr-3" aria-hidden="true"></i>
             Booking
         </a>
         <a href="{{ route('paket.index') }}" class="flex items-center {{ Request::is('paket') || Request::is('paket/create') || Request::is('paket/*/edit') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
@@ -22,8 +22,8 @@
             Category
         </a>
     </nav>
-    <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
+    <!-- <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
         <i class="fas fa-arrow-circle-up mr-3"></i>
         Upgrade to Pro!
-    </a>
+    </a> -->
 </aside>
