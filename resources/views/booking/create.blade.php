@@ -57,10 +57,10 @@
 
             <div class="mb-2">
                 <label for="pakets" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
-                <select id="pakets" name="paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <select id="pakets" name="id_paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option value="" selected>- Pilih Paket -</option>
-                    @foreach ($namapaket as $name => $packs)
-                    <option value="{{ $name }}" data-image="/assets/images/paket/{{ $packs[0]->image }}">{{ $name }}</option>
+                    @foreach ($paket as $pack)
+                    <option value="{{ $pack->id_paket }}" data-image="/assets/images/paket/{{ $pack->image }}">{{ $pack->namapaket }}</option>
                     @endforeach
                 </select>
             </div>
@@ -68,18 +68,13 @@
             <div class="mb-2 flex gap-4">
                 <div id="package-image-container" class="flex flex-col">
                     <!-- Default image -->
-                    <img id="package-image" class="h-[500px] max-w-lg" src="/assets/images/contoh-package.jpg" alt="image description">
+                    <img id="package-image" class="max-w-lg">
                 </div>
                 <div class="flex flex-col gap-8">
-                    @foreach ($namacategory as $namecat => $cat)
-                    <h2 class="font-bold text-2xl" id="titlePaket">{{$namecat}}</h2>
-                    @endforeach
-                    @foreach ($category as $cat)
-                    <div class="flex items-center">
-                        <input id="{{$cat->namacategory}}" type="radio" value="{{$cat->namacategory}}" name="category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="{{$cat->namacategory}}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{$cat->namacategory}}</label>
+                    <h2 class="font-bold text-2xl" id="titlePaket">Pilih Paket untuk Melihat Kategori</h2>
+                    <div id="categories" class="flex flex-col gap-4">
+                        <!-- Categories will be listed here -->
                     </div>
-                    @endforeach
                 </div>
             </div>
 
@@ -113,8 +108,27 @@
 
         // Perbarui sumber gambar dengan URL yang sesuai
         imageElement.src = imageUrl;
+
+        // Filter categories berdasarkan paket yang dipilih
+        $.ajax({
+            url: '/paket/filter',
+            type: 'GET',
+            data: { id_paket: selectedValue },
+            success: function(response) {
+                const categoriesContainer = document.getElementById('categories');
+                categoriesContainer.innerHTML = '';
+                response.forEach((category, index) => {
+                    const radioInput = `
+                        <div class="flex items-center">
+                            <input id="category_${category.id_category}" type="radio" value="${category.id_category}" name="id_category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                            <label for="category_${category.id_category}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">${category.namacategory}</label>
+                        </div>
+                    `;
+                    categoriesContainer.insertAdjacentHTML('beforeend', radioInput);
+                });
+            }
+        });
     });
 </script>
-
 
 @endsection

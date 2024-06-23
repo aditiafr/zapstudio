@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Paket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -16,8 +17,9 @@ class CategoryController extends Controller
     public function index()
     {
         $category = Category::all();
+        $data = DB::table('category')->join('pakets', 'pakets.id_paket', '=', 'category.id_paket')->get();
 
-        return view('category.index', compact('category'));
+        return view('category.index', compact('category', 'data'));
     }
 
     /**
@@ -27,9 +29,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $namapaket = Paket::all()->groupBy('name');
+        $paket = Paket::all();
 
-        return view('category.create', compact('namapaket'));
+        return view('category.create', compact('paket'));
     }
 
     /**
@@ -41,14 +43,14 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'namapaket' => 'required',
+            'id_paket' => 'required',
             'namacategory' => 'required',
             'harga' => 'required',
             'deskripsi' => 'required',
         ]);
 
         Category::create([
-            'namapaket' => $request->namapaket,
+            'id_paket' => $request->id_paket,
             'namacategory' => $request->namacategory,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,
@@ -78,9 +80,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
 
-        $namapaket = Paket::all()->groupBy('name');
+        $paket = Paket::all();
 
-        return view('category.edit', compact('category', 'namapaket'));
+        return view('category.edit', compact('category', 'paket'));
     }
 
     /**
@@ -93,14 +95,14 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         $request->validate([
-            'namapaket' => 'required',
+            'id_paket' => 'required',
             'namacategory' => 'required',
             'harga' => 'required',
             'deskripsi' => 'required',
         ]);
 
         $category->update([
-            'namapaket' => $request->namapaket,
+            'id_paket' => $request->id_paket,
             'namacategory' => $request->namacategory,
             'harga' => $request->harga,
             'deskripsi' => $request->deskripsi,

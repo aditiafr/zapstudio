@@ -27,8 +27,8 @@
         <div class="grid grid-cols-1 gap-6">
 
             <div class="mb-2">
-                <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Paket</label>
-                <input type="name" id="nama" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Paket" required />
+                <label for="namapaket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama Paket</label>
+                <input type="name" id="namapaket" name="namapaket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Masukan Nama Paket" required />
             </div>
 
             <div class="mb-2">

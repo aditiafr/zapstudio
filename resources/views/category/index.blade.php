@@ -52,6 +52,7 @@
         <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
             <thead>
                 <tr>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nomor</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Paket</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Category</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Deskripsi</th>
@@ -59,17 +60,18 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($category as $cat)
+                @foreach ($data as $no => $cat)
                 <tr class="hover:bg-grey-lighter">
+                    <td class="py-4 px-6 border-b border-grey-light">{{$no+1}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$cat->namapaket}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$cat->namacategory}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$cat->deskripsi}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">
                         <div class="flex gap-3 justify-center">
-                            <a href="{{ route('category.edit',$cat->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                            <a href="{{ route('category.edit',$cat->id_category) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                                 Edit
                             </a>
-                            <form action="{{ route('category.destroy',$cat->id) }}" method="POST">
+                            <form action="{{ route('category.destroy',$cat->id_category) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Delete</button>
@@ -81,8 +83,5 @@
             </tbody>
         </table>
     </div>
-    <p class="pt-3 text-gray-600">
-        Source: <a class="underline" href="https://tailwindcomponents.com/component/table">https://tailwindcomponents.com/component/table</a>
-    </p>
 </div>
 @endsection

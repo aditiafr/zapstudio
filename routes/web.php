@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 // routes/web.php
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\UserBookingController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,11 +15,25 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
 
+Route::get('login', [UserController::class, 'login'])->name('login');
+Route::post('login', [UserController::class, 'login_action'])->name('login.action');
+
+Route::get('register', [UserController::class, 'register'])->name('register');
+Route::post('register', [UserController::class, 'register_action'])->name('register.action');
+
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+
+// Route::resource('login', UserController::class);
 
 Route::resource('booking', BookingController::class);
+Route::get('/paket/filter', [BookingController::class, 'filter']);
+Route::get('userbooking', [BookingController::class, 'userBooking']);
+Route::post('userpost', [BookingController::class, 'userPost']);
 
 Route::resource('paket', PaketController::class);
 
 Route::resource('category', CategoryController::class);
+
+// Route::resource('userbooking', UserBookingController::class);
 
 // Route::get('/customers', [PageController::class, 'customers'])->name('customers');

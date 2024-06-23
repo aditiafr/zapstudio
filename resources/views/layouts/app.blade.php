@@ -58,9 +58,16 @@
         }
     </style>
 
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="path/css/font-awesome.min.css">
+
 </head>
 
 <body class="bg-gray-100 font-family-karla flex">
+    @auth
 
     @include('components.sidebar')
 
@@ -75,6 +82,7 @@
         </div>
     </div>
 
+    @endauth
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->

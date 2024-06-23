@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Booking extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'Bookings';
+    protected $primaryKey = 'id_booking';
 
     protected $fillable = [
         'name',
@@ -17,7 +18,12 @@ class Booking extends Model
         'notlp',
         'tanggal',
         'jam',
-        'paket',
-        'category'
+        'id_paket',
+        'id_category'
     ];
+
+    public function paket()
+    {
+        return $this->belongsTo(Paket::class, 'id_paket', 'id_paket');
+    }
 }

@@ -9,7 +9,7 @@
 </div>
 
 <div class="w-full mt-8 bg-white p-6 rounded">
-    <form action="{{route('booking.update', $booking->id)}}" method="POST">
+    <form action="{{route('booking.update', $booking->id_booking)}}" method="POST">
         @csrf
         @method('PUT')
 
@@ -58,35 +58,25 @@
             </div>
 
             <div class="mb-2">
-                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
-                <select id="countries" name="paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option>- Pilih Paket -</option>
-                    @foreach ($namapaket as $name => $packs)
-                    <option value="{{ $name }}" {{ $booking->paket == $name ? 'selected' : '' }}>{{ $name }}</option>
+                <label for="pakets" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
+                <select id="pakets" name="id_paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option value="" selected>- Pilih Paket -</option>
+                    @foreach ($paket as $pack)
+                    <option value="{{ $pack->id_paket }}" data-image="/assets/images/paket/{{ $pack->image }}" {{$booking->id_paket == $pack->id_paket ? 'selected' : ''}}>{{ $pack->namapaket }}</option>
                     @endforeach
                 </select>
             </div>
 
-
             <div class="mb-2 flex gap-4">
-                <div class="">
-                    <img class="h-[500px] max-w-lg" src="/assets/images/contoh-package.jpg" alt="image description">
+                <div id="package-image-container" class="flex flex-col">
+                    <!-- Default image -->
+                    <img id="package-image" class=" max-w-lg">
                 </div>
                 <div class="flex flex-col gap-8">
-                    <h2 class="font-bold text-2xl">Friendly Package</h2>
-                    <div class="flex items-center">
-                        <input id="couple" type="radio" value="Couple Package" name="category" {{ $booking->category == 'Couple Package' ? 'checked' : '' }} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="couple" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Couple Package</label>
+                    <h2 class="font-bold text-2xl" id="titlePaket">Pilih Paket untuk Melihat Kategori</h2>
+                    <div id="categories" class="flex flex-col gap-4">
+                        <!-- Categories will be listed here -->
                     </div>
-                    <div class="flex items-center">
-                        <input id="friends" type="radio" value="Friends Package" name="category" {{ $booking->category == 'Friends Package' ? 'checked' : '' }} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="friends" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Friends Package</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input id="bestie" type="radio" value="Bestie Package" name="category" {{ $booking->category == 'Bestie Package' ? 'checked' : '' }} class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="bestie" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Bestie Package</label>
-                    </div>
-
                 </div>
             </div>
 
@@ -98,5 +88,68 @@
         </div>
     </form>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil elemen-elemen yang diperlukan
+        const selectElement = document.getElementById('pakets');
+        const imageElement = document.getElementById('package-image');
+        const titleElement = document.getElementById('titlePaket');
+        const categoriesContainer = document.getElementById('categories');
+
+        // Fungsi untuk memperbarui gambar dan kategori
+        function updatePackageDetails(selectedOption) {
+            // Dapatkan nilai dan teks dari opsi yang dipilih
+            const selectedValue = selectedOption.value;
+            const selectedText = selectedOption.textContent;
+
+            // Perbarui teks judul dengan teks yang sesuai
+            titleElement.textContent = selectedText;
+
+            // Dapatkan URL gambar yang sesuai dengan opsi yang dipilih
+            const imageUrl = selectedOption.getAttribute('data-image');
+
+            // Perbarui sumber gambar dengan URL yang sesuai
+            imageElement.src = imageUrl;
+
+            // Lakukan AJAX untuk mendapatkan kategori berdasarkan paket yang dipilih
+            $.ajax({
+                url: '/paket/filter',
+                type: 'GET',
+                data: {
+                    id_paket: selectedValue
+                },
+                success: function(response) {
+                    categoriesContainer.innerHTML = '';
+                    response.forEach((category, index) => {
+                        const radioInput = `
+                            <div class="flex items-center">
+                                <input id="category_${category.id_category}" type="radio" value="${category.id_category}" name="id_category" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                <label for="category_${category.id_category}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">${category.namacategory}</label>
+                            </div>
+                        `;
+                        categoriesContainer.insertAdjacentHTML('beforeend', radioInput);
+                    });
+                }
+            });
+        }
+
+        // Ambil opsi yang terpilih secara default
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+
+        // Panggil fungsi untuk memperbarui gambar dan kategori saat halaman dimuat
+        if (selectedOption) {
+            updatePackageDetails(selectedOption);
+        }
+
+        // Tambahkan event listener ke select element
+        selectElement.addEventListener('change', function() {
+            // Dapatkan opsi yang dipilih
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            updatePackageDetails(selectedOption);
+        });
+    });
+</script>
+
 
 @endsection

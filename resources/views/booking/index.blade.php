@@ -52,30 +52,34 @@
         <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
             <thead>
                 <tr>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nomor</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Lengkap</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nomor Telpon / WA</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Tanggal</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Jam</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nama Paket</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Category Paket</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Harga</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($bookings as $book)
+                @foreach ($data as $no => $book)
                 <tr class="hover:bg-grey-lighter">
+                    <td class="py-4 px-6 border-b border-grey-light">{{$no+1}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$book->name}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$book->notlp}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$book->tanggal}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$book->jam}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->paket}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->category}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{$book->namapaket}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{$book->namacategory}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">Rp.{{number_format($book->harga,2,',','.')}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">
                         <div class="flex gap-3 justify-center">
-                            <a href="{{ route('booking.edit',$book->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                            <a href="{{ route('booking.edit',$book->id_booking) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                                 Edit
                             </a>
-                            <form action="{{ route('booking.destroy',$book->id) }}" method="POST">
+                            <form action="{{ route('booking.destroy',$book->id_booking) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Delete</button>
@@ -88,8 +92,5 @@
             </tbody>
         </table>
     </div>
-    <p class="pt-3 text-gray-600">
-        Source: <a class="underline" href="https://tailwindcomponents.com/component/table">https://tailwindcomponents.com/component/table</a>
-    </p>
 </div>
 @endsection

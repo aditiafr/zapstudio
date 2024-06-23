@@ -52,24 +52,26 @@
         <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
             <thead>
                 <tr>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nomor</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Paket</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Image</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($paket as $pack)
+                @foreach ($paket as $no => $pack)
                 <tr class="hover:bg-grey-lighter">
-                    <td class="py-4 px-6 border-b border-grey-light">{{$pack->name}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{$no+1}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{$pack->namapaket}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">
-                        <img class="h-32 max-w-lg" src="/assets/images/paket/{{ $pack->image }}" alt="{{$pack->name}}">
+                        <img class="h-32 max-w-lg" src="/assets/images/paket/{{ $pack->image }}" alt="{{$pack->namapaket}}">
                     </td>
                     <td class="py-4 px-6 border-b border-grey-light">
                         <div class="flex gap-3 justify-center">
-                            <a href="{{ route('paket.edit',$pack->id) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                            <a href="{{ route('paket.edit',$pack->id_paket) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                                 Edit
                             </a>
-                            <form action="{{ route('paket.destroy',$pack->id) }}" method="POST">
+                            <form action="{{ route('paket.destroy',$pack->id_paket) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Delete</button>
@@ -81,8 +83,5 @@
             </tbody>
         </table>
     </div>
-    <p class="pt-3 text-gray-600">
-        Source: <a class="underline" href="https://tailwindcomponents.com/component/table">https://tailwindcomponents.com/component/table</a>
-    </p>
 </div>
 @endsection

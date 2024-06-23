@@ -22,18 +22,18 @@
 </div>
 
 <div class="w-full mt-8 bg-white p-6 rounded">
-    <form action="{{route('category.update', $category->id)}}" method="POST">
+    <form action="{{route('category.update', $category->id_category)}}" method="POST">
         @csrf
         @method('PUT')
 
         <div class="grid grid-cols-1 gap-6">
 
             <div class="mb-2">
-                <label for="namapaket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
-                <select id="namapaket" name="namapaket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>- Pilih Paket -</option>
-                    @foreach ($namapaket as $name => $packs)
-                    <option value="{{ $name }}" {{ $category->namapaket == $name ? 'selected' : '' }}>{{ $name }}</option>
+                <label for="id_paket" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pilih Paket</label>
+                <select id="id_paket" name="id_paket" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" require>
+                    <option value="" selected>- Pilih Paket -</option>
+                    @foreach ($paket as $pack)
+                    <option value="{{ $pack->id_paket }}" {{ $category->id_paket == $pack->id_paket ? 'selected' : '' }}>{{ $pack->namapaket }}</option>
                     @endforeach
                 </select>
             </div>

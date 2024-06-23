@@ -10,9 +10,10 @@ class Paket extends Model
     use HasFactory;
     
     protected $table = 'Pakets';
+    protected $primaryKey = 'id_paket';
 
     protected $fillable = [
-        'name',
+        'namapaket',
         'category',
         'image',
     ];

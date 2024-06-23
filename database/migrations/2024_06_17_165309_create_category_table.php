@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('category', function (Blueprint $table) {
-            $table->id();
-            $table->string('namapaket');
+            $table->id('id_category');
+            $table->string('id_paket');
             $table->string('namacategory');
             $table->string('harga');
             $table->text('deskripsi');

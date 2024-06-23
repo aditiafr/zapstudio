@@ -38,7 +38,7 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'namapaket' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -49,7 +49,7 @@ class PaketController extends Controller
         }
 
         Paket::create([
-            'name' => $request->name,
+            'namapaket' => $request->namapaket,
             'image' => $profileImage,
         ]);
 
@@ -89,24 +89,33 @@ class PaketController extends Controller
     public function update(Request $request, Paket $paket)
     {
         $request->validate([
-            'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'namapaket' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        // Initialize $profileImage with the existing image path
+        $profileImage = $paket->image;
 
         if ($image = $request->file('image')) {
             $destinationPath = 'assets/images/paket/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
+
+            // Optionally, you might want to delete the old image if a new one is uploaded
+            // if (file_exists(public_path($paket->image))) {
+            //     unlink(public_path($paket->image));
+            // }
         }
 
         $paket->update([
-            'name' => $request->name,
+            'namapaket' => $request->namapaket,
             'image' => $profileImage,
         ]);
 
         return redirect()->route('paket.index')
             ->with('success', 'Paket updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.

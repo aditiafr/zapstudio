@@ -6,6 +6,7 @@ use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Paket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -19,7 +20,48 @@ class BookingController extends Controller
 
         $bookings = Booking::all();
 
-        return view('booking.index', compact('bookings'));
+        $data = DB::table('bookings')
+            ->join('pakets', 'pakets.id_paket', '=', 'bookings.id_paket')
+            ->join('category', 'category.id_category', '=', 'bookings.id_category')
+            ->get();
+        return view('booking.index', compact('bookings', 'data'));
+    }
+
+    public function userBooking()
+    {
+        $paket = Paket::all();
+
+        return view('userbooking.index', compact('paket'));
+    }
+
+    public function userPost(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'notlp' => 'required',
+            'tanggal' => 'required',
+            'jam' => 'required',
+            'id_paket' => 'required',
+            'id_category' => 'required',
+        ]);
+
+        // $input = $request->all();
+
+        $tanggal = date('Y-m-d', strtotime($request->tanggal));
+
+        Booking::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'notlp' => $request->notlp,
+            'tanggal' => $tanggal,
+            'jam' => $request->jam,
+            'id_paket' => $request->id_paket,
+            'id_category' => $request->id_category,
+        ]);
+
+        return redirect('userbooking')
+            ->with('success', 'Booking successfully.');
     }
 
     /**
@@ -30,11 +72,15 @@ class BookingController extends Controller
     public function create()
     {
         $paket = Paket::all();
-        $namapaket = Paket::all()->groupBy('name');
-        $category = Category::all();
-        $namacategory = Category::all()->groupBy('namapaket');
 
-        return view('booking.create', compact('paket', 'namapaket', 'category', 'namacategory'));
+        return view('booking.create', compact('paket'));
+    }
+
+    public function filter(Request $request)
+    {
+        $namapaket = $request->get('id_paket');
+        $categories = Category::where('id_paket', $namapaket)->get();
+        return response()->json($categories);
     }
 
     /**
@@ -51,8 +97,8 @@ class BookingController extends Controller
             'notlp' => 'required',
             'tanggal' => 'required',
             'jam' => 'required',
-            'paket' => 'required',
-            'category' => 'required',
+            'id_paket' => 'required',
+            'id_category' => 'required',
         ]);
 
         // $input = $request->all();
@@ -65,8 +111,8 @@ class BookingController extends Controller
             'notlp' => $request->notlp,
             'tanggal' => $tanggal,
             'jam' => $request->jam,
-            'paket' => $request->paket,
-            'category' => $request->category,
+            'id_paket' => $request->id_paket,
+            'id_category' => $request->id_category,
         ]);
 
         return redirect()->route('booking.index')
@@ -92,9 +138,9 @@ class BookingController extends Controller
      */
     public function edit(Booking $booking)
     {
-        $namapaket = Paket::all()->groupBy('name');
         $paket = Paket::all();
-        return view('booking.edit', compact('booking', 'namapaket', 'paket'));
+
+        return view('booking.edit', compact('booking', 'paket'));
     }
 
     /**
@@ -118,8 +164,8 @@ class BookingController extends Controller
             'notlp' => $request->notlp,
             'tanggal' => $tanggal,
             'jam' => $request->jam,
-            'paket' => $request->paket,
-            'category' => $request->category,
+            'id_paket' => $request->id_paket,
+            'id_category' => $request->id_category,
         ]);
 
         return redirect()->route('booking.index')
