@@ -48,7 +48,6 @@
                         </button>
                     </a>
                 </div>
-
             </div>
             <div class="content">
                 <img src="/assets/images/content-1.jpg" alt="Content 1" width="300px" class="rounded-2xl shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105">
@@ -56,17 +55,71 @@
         </div>
     </section>
 
-    <section id="about" class="bg-gray-50 h-screen">
-        <div class="max-w-screen-xl h-full py-12 flex flex-col items-center justify-around mx-auto">
-            <h1 class="text-4xl font-bold mb-4">About</h1>
-            <p>About section content goes here.</p>
+    <section id="about" class="bg-gray-100 h-full">
+        <div class="max-w-screen-xl py-24 flex flex-col items-center justify-around mx-auto">
+            <h1 class="text-4xl font-bold mb-4">About Us</h1>
+            <div class="border-b-4 border-gray-400 w-24"></div>
+
+            <div class="flex gap-8 w-full justify-center items-center mt-8">
+
+                <div class="content">
+                    <img src="/assets/images/content-2.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                </div>
+                <div class="grid grid-cols-2 gap-6 h-full justify-center">
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                        <!-- <div class="flex gap-2 mb-2 text-blue-700">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </div> -->
+                        <h2 class="text-xl font-bold text-blue-700">Kreasi Tanpa Batas</h2>
+                        <p class="leading-relaxed">Kamu memiliki kendali penuh atas semua aspek fotografi, termasuk pencahayaan, latar belakang, sudut pengambilan gambar, dan pengeditan.</p>
+                    </div>
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                        <h2 class="text-xl font-bold text-blue-700">Harga Terjangkau</h2>
+                        <p class="leading-relaxed">Nikmati kualitas foto yang sama seperti studio foto profesional, tanpa perlu membayar biaya yang mahal.</p>
+                    </div>
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                        <h2 class="text-xl font-bold text-blue-700">Privasi</h2>
+                        <p class="leading-relaxed">Privasi memberikan Kamu lingkungan yang tenang dan intim untuk mengambil foto yang lebih personal atau pribadi, tanpa gangguan dari orang lain.</p>
+                    </div>
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                        <h2 class="text-xl font-bold text-blue-700">Banyak Properti</h2>
+                        <p class="leading-relaxed">Kami menawarkan berbagai latar belakang dan properti foto yang dapat digunakan oleh pelanggan untuk menciptakan tampilan yang berbeda-beda.</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="bg-gray-100 h-screen">
-        <div class="max-w-screen-xl h-full py-12 flex flex-col items-center justify-around mx-auto">
+    <section id="services" class="bg-white h-full">
+        <div class="max-w-screen-xl py-24 flex flex-col items-center justify-around mx-auto">
             <h1 class="text-4xl font-bold mb-4">Services</h1>
-            <p>Services section content goes here.</p>
+            <div class="border-b-4 w-24"></div>
+
+            <p class="text-center w-3/4 text-xl leading-relaxed my-10">Ciptakan kenangan indah tanpa menyewa fotografer dengan layanan Self-Studio Foto. Dapatkan hasil foto terbaik dengan berbagai properti kreatif yang kami sediakan dan tersedia paket sebagai berikut.</p>
+            <div class="grid grid-cols-3 items-center gap-4 mb-12">
+                <div class="content">
+                    <img src="/assets/images/pakets/friendly-package.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                </div>
+                <div class="content">
+                    <img src="/assets/images/pakets/package.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                </div>
+                <div class="content">
+                    <img src="/assets/images/pakets/kind-package.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                </div>
+                <div class="content">
+                    <img src="/assets/images/pakets/family-package.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                </div>
+                <div class="content">
+                    <img src="/assets/images/pakets/add-package.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
+                </div>
+            </div>
+            <a href="{{url('userbooking')}}">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded-3xl font-semibold transition-transform duration-300 ease-in-out transform hover:scale-105 w-auto">
+                    <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                    Booking Now
+                </button>
+            </a>
         </div>
     </section>
 
