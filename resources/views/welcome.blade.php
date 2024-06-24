@@ -26,15 +26,15 @@
 
     <section class="relative" id="home">
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/assets/images/background.jpg');"></div>
-        <div class="max-w-screen-xl h-screen flex flex-wrap items-center justify-around mx-auto relative z-10">
-            <div class="content">
-                <h2 class="text-5xl font-bold leading-tight">
+        <div class="max-w-screen-xl pt-40 md:pt-48 pb-20 flex flex-wrap items-center justify-around mx-auto relative z-10">
+            <div class="content mb-10 md:mb-0">
+                <h2 class="text-5xl text-center md:text-left font-bold leading-tight">
                     Abadikan <br>
                     Moment <br>
                     Bersama di <br>
                     <span class="text-blue-500"> Zap Studio </span>
                 </h2>
-                <div class="flex items-start mt-6 gap-4">
+                <div class="flex flex-col md:flex-row items-center md:items-start mt-6 gap-4">
                     <a href="{{url('userbooking')}}">
                         <button class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded-3xl font-semibold transition-transform duration-300 ease-in-out transform hover:scale-105 w-auto">
                             <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
@@ -50,38 +50,38 @@
                 </div>
             </div>
             <div class="content">
-                <img src="/assets/images/content-1.jpg" alt="Content 1" width="300px" class="rounded-2xl shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105">
+                <img src="/assets/images/content-1.jpg" alt="Content 1" class="w-[300px] rounded-2xl shadow-2xl transition-transform duration-300 ease-in-out transform hover:scale-105">
             </div>
         </div>
     </section>
 
-    <section id="about" class="bg-gray-100 h-full">
+    <section id="about" class="bg-gray-100 h-full px-6">
         <div class="max-w-screen-xl py-24 flex flex-col items-center justify-around mx-auto">
             <h1 class="text-4xl font-bold mb-4">About Us</h1>
             <div class="border-b-4 border-gray-400 w-24"></div>
 
-            <div class="flex gap-8 w-full justify-center items-center mt-8">
+            <div class="flex flex-col md:flex-row gap-8 w-full justify-center items-center mt-8">
 
                 <div class="content">
                     <img src="/assets/images/content-2.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
                 </div>
-                <div class="grid grid-cols-2 gap-6 h-full justify-center">
-                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                <div class="grid md:grid-cols-2 gap-8 h-full justify-center">
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-xl shadow-lg text-center">
                         <!-- <div class="flex gap-2 mb-2 text-blue-700">
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </div> -->
                         <h2 class="text-xl font-bold text-blue-700">Kreasi Tanpa Batas</h2>
                         <p class="leading-relaxed">Kamu memiliki kendali penuh atas semua aspek fotografi, termasuk pencahayaan, latar belakang, sudut pengambilan gambar, dan pengeditan.</p>
                     </div>
-                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-xl shadow-lg text-center">
                         <h2 class="text-xl font-bold text-blue-700">Harga Terjangkau</h2>
                         <p class="leading-relaxed">Nikmati kualitas foto yang sama seperti studio foto profesional, tanpa perlu membayar biaya yang mahal.</p>
                     </div>
-                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-xl shadow-lg text-center">
                         <h2 class="text-xl font-bold text-blue-700">Privasi</h2>
                         <p class="leading-relaxed">Privasi memberikan Kamu lingkungan yang tenang dan intim untuk mengambil foto yang lebih personal atau pribadi, tanpa gangguan dari orang lain.</p>
                     </div>
-                    <div class="flex flex-col gap-3 bg-white p-4 rounded-md shadow-lg text-center">
+                    <div class="flex flex-col gap-3 bg-white p-4 rounded-xl shadow-lg text-center">
                         <h2 class="text-xl font-bold text-blue-700">Banyak Properti</h2>
                         <p class="leading-relaxed">Kami menawarkan berbagai latar belakang dan properti foto yang dapat digunakan oleh pelanggan untuk menciptakan tampilan yang berbeda-beda.</p>
                     </div>
@@ -91,13 +91,13 @@
         </div>
     </section>
 
-    <section id="services" class="bg-white h-full">
+    <section id="services" class="bg-white h-full px-6">
         <div class="max-w-screen-xl py-24 flex flex-col items-center justify-around mx-auto">
             <h1 class="text-4xl font-bold mb-4">Services</h1>
             <div class="border-b-4 w-24"></div>
 
-            <p class="text-center w-3/4 text-xl leading-relaxed my-10">Ciptakan kenangan indah tanpa menyewa fotografer dengan layanan Self-Studio Foto. Dapatkan hasil foto terbaik dengan berbagai properti kreatif yang kami sediakan dan tersedia paket sebagai berikut.</p>
-            <div class="grid grid-cols-3 items-center gap-4 mb-12">
+            <p class="text-center md:w-3/4 md:text-xl leading-relaxed my-10">Ciptakan kenangan indah tanpa menyewa fotografer dengan layanan Self-Studio Foto. Dapatkan hasil foto terbaik dengan berbagai properti kreatif yang kami sediakan dan tersedia paket sebagai berikut.</p>
+            <div class="grid grid-cols-2 md:grid-cols-3 items-center gap-4 mb-12">
                 <div class="content">
                     <img src="/assets/images/pakets/friendly-package.jpg" alt="Content 1" class="w-full rounded shadow-lg transition-transform duration-300 ease-in-out transform hover:scale-105">
                 </div>
@@ -123,12 +123,12 @@
         </div>
     </section>
 
-    <section id="contact" class="bg-gray-50">
+    <section id="contact" class="bg-gray-50 h-full px-6">
         <div class="max-w-screen-xl py-24 flex flex-col items-center justify-around mx-auto">
             <h1 class="text-4xl font-bold mb-4">Contact</h1>
             <div class="border-b-4 w-24"></div>
 
-            <div class="flex gap-8 w-full mt-8">
+            <div class="flex flex-col md:flex-row gap-8 w-full mt-8">
                 <div class="bg-white flex flex-col justify-around px-6 py-8 w-full rounded-xl shadow-md">
                     <div class="flex flex-col gap-2">
                         <h2 class="text-2xl font-bold text-blue-700">Kritik & Saran</h2>
@@ -150,9 +150,9 @@
 
                 </div>
 
-                <div class="">
-                    <div class="w-full shadow-lg">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.647737775927!2d106.82750887572654!3d-6.439264846314795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb22922efc8d%3A0xe0ddab6d9d34b6a4!2sZAP%20self%20photo%20studio!5e0!3m2!1sid!2sid!4v1719029120825!5m2!1sid!2sid" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="w-full bg-white shadow-lg p-6 rounded-lg">
+                    <div class="">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.647737775927!2d106.82750887572654!3d-6.439264846314795!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69eb22922efc8d%3A0xe0ddab6d9d34b6a4!2sZAP%20self%20photo%20studio!5e0!3m2!1sid!2sid!4v1719029120825!5m2!1sid!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-96"></iframe>
                     </div>
                     <div class="flex flex-col gap-2">
                         <p class="text-lg mt-4 font-semibold">

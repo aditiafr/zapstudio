@@ -18,13 +18,12 @@ class BookingController extends Controller
     public function index()
     {
 
-        $bookings = Booking::all();
-
         $data = DB::table('bookings')
             ->join('pakets', 'pakets.id_paket', '=', 'bookings.id_paket')
             ->join('category', 'category.id_category', '=', 'bookings.id_category')
-            ->get();
-        return view('booking.index', compact('bookings', 'data'));
+            ->select('bookings.*', 'pakets.*', 'category.*') // pastikan Anda memilih kolom yang Anda butuhkan
+            ->paginate(10);
+        return view('booking.index', compact('data'));
     }
 
     public function userBooking()

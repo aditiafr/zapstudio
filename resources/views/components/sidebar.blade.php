@@ -2,10 +2,10 @@
 <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
     <div class="p-6 flex items-center gap-2">
         <img class="w-16 h-auto" src="/assets/images/logo.png" alt="Logo">
-        <a href="{{ route('dashboard') }}" class="text-white text-xl font-semibold uppercase hover:text-gray-300">ZAP Studio</a>
+        <a href="{{ route('dashboard.index') }}" class="text-white text-xl font-semibold uppercase hover:text-gray-300">ZAP Studio</a>
     </div>
     <nav class="text-white text-base font-semibold pt-3">
-        <a href="{{ route('dashboard') }}" class="flex items-center {{ Request::is('dashboard') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
+        <a href="{{ route('dashboard.index') }}" class="flex items-center {{ Request::is('dashboard') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
             <i class="fas fa-tachometer-alt mr-3"></i>
             Dashboard
         </a>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 // routes/web.php
 use App\Http\Controllers\PageController;
@@ -13,7 +14,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [PageController::class, 'dashboard'])->name('dashboard');
+
 
 Route::get('login', [UserController::class, 'login'])->name('login');
 Route::post('login', [UserController::class, 'login_action'])->name('login.action');
@@ -33,6 +34,8 @@ Route::post('userpost', [BookingController::class, 'userPost']);
 Route::resource('paket', PaketController::class);
 
 Route::resource('category', CategoryController::class);
+
+Route::resource('dashboard', DashboardController::class);
 
 // Route::resource('userbooking', UserBookingController::class);
 

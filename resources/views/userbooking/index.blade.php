@@ -29,7 +29,7 @@
     @include('components.navbar')
 
     <div class="w-full h-full flex justify-center items-center bg-gray-100">
-        <div class="w-full h-full mt-32 mb-14 mx-44 p-12 bg-white rounded-lg shadow-md">
+        <div class="w-full h-full mt-32 mb-14 mx-6 md:mx-44 p-8 md:p-12 bg-white rounded-lg shadow-md">
 
             @if ($message = Session::get('success'))
 
@@ -109,7 +109,7 @@
                         </select>
                     </div>
 
-                    <div class="mb-2 flex gap-4">
+                    <div class="mb-2 flex flex-col md:flex-row gap-4">
                         <div id="package-image-container" class="flex flex-col">
                             <!-- Default image -->
                             <img id="package-image" class="max-w-lg">

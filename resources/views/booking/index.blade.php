@@ -48,9 +48,9 @@
         </form>
     </div>
 
-    <div class="bg-white overflow-auto">
-        <table class="text-left w-full border-collapse"> <!--Border collapse doesn't work on this site yet but it's available in newer tailwind versions -->
-            <thead>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nomor</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Lengkap</th>
@@ -64,33 +64,36 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($data as $no => $book)
+                @foreach ($data as $index => $book)
                 <tr class="hover:bg-grey-lighter">
-                    <td class="py-4 px-6 border-b border-grey-light">{{$no+1}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->name}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->notlp}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->tanggal}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->jam}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->namapaket}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">{{$book->namacategory}}</td>
-                    <td class="py-4 px-6 border-b border-grey-light">Rp.{{number_format($book->harga,2,',','.')}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $data->firstItem() + $index }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $book->name }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $book->notlp }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $book->tanggal }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $book->jam }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $book->namapaket }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{ $book->namacategory }}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">Rp.{{ number_format($book->harga, 2, ',', '.') }}</td>
                     <td class="py-4 px-6 border-b border-grey-light">
                         <div class="flex gap-3 justify-center">
-                            <a href="{{ route('booking.edit',$book->id_booking) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
+                            <a href="{{ route('booking.edit', $book->id_booking) }}" class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded">
                                 Edit
                             </a>
-                            <form action="{{ route('booking.destroy',$book->id_booking) }}" method="POST">
+                            <form action="{{ route('booking.destroy', $book->id_booking) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded">Delete</button>
                             </form>
-
                         </div>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="p-4">
+            {{ $data->links() }}
+        </div>
     </div>
+
 </div>
 @endsection
