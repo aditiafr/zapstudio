@@ -128,8 +128,8 @@
             <h1 class="text-4xl font-bold mb-4">Contact</h1>
             <div class="border-b-4 w-24"></div>
 
-            <div class="flex flex-col md:flex-row gap-8 w-full mt-8">
-                <div class="bg-white flex flex-col justify-around px-6 py-8 w-full rounded-xl shadow-md">
+            <div class="flex flex-col md:flex-row gap-8 w-full justify-center mt-8">
+                <div class="bg-white flex flex-col justify-around px-6 py-8 w-full h-full rounded-xl shadow-md">
                     <div class="flex flex-col gap-2">
                         <h2 class="text-2xl font-bold text-blue-700">Kritik & Saran</h2>
                         <div class="border-b-4 w-full"></div>
@@ -172,6 +172,10 @@
 
         </div>
     </section>
+
+    <footer class="w-full bg-white text-center px-4 py-8">
+        © Copyright 2023<a href="url('/')" class="text-blue-700 hover:underline"> ZapStudio</a>.
+    </footer>
 
     <script>
         // Smooth scrolling and active section highlighting
