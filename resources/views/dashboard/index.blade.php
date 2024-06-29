@@ -5,22 +5,22 @@
 @section('content')
 <h1 class="text-3xl text-black pb-6">Dashboard</h1>
 
-<div class="w-full mt-12">
+<div class="w-full mt-4">
     <div class="grid md:grid-cols-2 gap-4">
-
-        <div class="w-full bg-white rounded px-4 py-6 flex items-center justify-around gap-8">
-            <i class="fa fa-users text-4xl" aria-hidden="true"></i>
-            <div class="flex flex-col gap-4">
-                <p class="text-xl font-bold">Total Customers</p>
-                <p class="text-2xl font-bold">2</p>
-            </div>
-        </div>
 
         <div class="w-full bg-white rounded px-4 py-6 flex items-center justify-around gap-8">
             <i class="fa fa-address-book text-4xl" aria-hidden="true"></i>
             <div class="flex flex-col gap-4">
                 <p class="text-xl font-bold">Total Booking</p>
-                <p class="text-2xl font-bold">2</p>
+                <p class="text-2xl font-bold">{{$totalBooking}}</p>
+            </div>
+        </div>
+
+        <div class="w-full bg-white rounded px-4 py-6 flex items-center justify-around gap-8">
+            <i class="fas fa-money-bill-wave-alt text-4xl"></i>
+            <div class="flex flex-col gap-4">
+                <p class="text-xl font-bold">Total Pendapatan <span class="font-normal text-md">| bulan</span> </p>
+                <p class="text-2xl font-bold">Rp. {{number_format($totalHarga, 2, ',', '.')}}</p>
             </div>
         </div>
 

@@ -21,8 +21,9 @@ class BookingController extends Controller
         $data = DB::table('bookings')
             ->join('pakets', 'pakets.id_paket', '=', 'bookings.id_paket')
             ->join('category', 'category.id_category', '=', 'bookings.id_category')
-            ->select('bookings.*', 'pakets.*', 'category.*') // pastikan Anda memilih kolom yang Anda butuhkan
+            ->select('bookings.*', 'pakets.*', 'category.*')
             ->paginate(10);
+
         return view('booking.index', compact('data'));
     }
 

@@ -25,7 +25,20 @@ class DashboardController extends Controller
             ->select('bookings.*', 'pakets.*', 'category.*') // pastikan Anda memilih kolom yang Anda butuhkan
             ->paginate(10);
 
-        return view('dashboard.index', compact('data'));
+        // Get the start and end date of the current month
+        $startOfMonth = Carbon::now()->startOfMonth();
+        $endOfMonth = Carbon::now()->endOfMonth();
+
+        // Calculate the total sum of the harga field for the current month
+        $totalHarga = DB::table('bookings')
+            ->join('pakets', 'pakets.id_paket', '=', 'bookings.id_paket')
+            ->join('category', 'category.id_category', '=', 'bookings.id_category')
+            ->whereBetween('bookings.tanggal', [$startOfMonth, $endOfMonth])
+            ->sum('category.harga');
+
+        $totalBooking = Booking::count();
+
+        return view('dashboard.index', compact('data', 'totalBooking', 'totalHarga'));
     }
 
     /**

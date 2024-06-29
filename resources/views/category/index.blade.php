@@ -55,6 +55,7 @@
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nomor</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Paket</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Name Category</th>
+                    <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Harga</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Deskripsi</th>
                     <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">Actions</th>
                 </tr>
@@ -65,6 +66,7 @@
                     <td class="py-4 px-6 border-b border-grey-light">{{$no+1}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$cat->namapaket}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$cat->namacategory}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">Rp.{{ number_format($cat->harga, 2, ',', '.') }}</td>
                     <td class="py-4 px-6 border-b border-grey-light">{{$cat->deskripsi}}</td>
                     <td class="py-4 px-6 border-b border-grey-light">
                         <div class="flex gap-3 justify-center">

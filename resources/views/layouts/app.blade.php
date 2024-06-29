@@ -18,6 +18,8 @@
     <link rel="mask-icon" href="/assets/images/icon/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
+    
+    <link rel="stylesheet" href="path/css/font-awesome.min.css">
 
     <!-- Tailwind CSS -->
     @vite(['resources/css/app.css','resources/js/app.js'])
@@ -58,11 +60,9 @@
         }
     </style>
 
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="path/css/font-awesome.min.css">
 
 </head>
 
