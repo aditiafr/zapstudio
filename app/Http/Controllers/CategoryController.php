@@ -14,10 +14,23 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
         $category = Category::all();
-        $data = DB::table('category')->join('pakets', 'pakets.id_paket', '=', 'category.id_paket')->get();
+
+        if ($search) {
+            $data = DB::table('category')
+                ->join('pakets', 'pakets.id_paket', '=', 'category.id_paket')
+                ->where('pakets.namapaket', 'like', "%{$search}%")
+                ->orWhere('category.namacategory', 'like', "%{$search}%")
+                ->orWhere('category.harga', 'like', "%{$search}%")
+                ->get();
+        } else {
+            $data = DB::table('category')
+                ->join('pakets', 'pakets.id_paket', '=', 'category.id_paket')
+                ->get();
+        }
 
         return view('category.index', compact('category', 'data'));
     }

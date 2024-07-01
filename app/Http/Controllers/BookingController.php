@@ -15,14 +15,28 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->input('search');
 
-        $data = DB::table('bookings')
+        $query = DB::table('bookings')
             ->join('pakets', 'pakets.id_paket', '=', 'bookings.id_paket')
             ->join('category', 'category.id_category', '=', 'bookings.id_category')
-            ->select('bookings.*', 'pakets.*', 'category.*')
-            ->paginate(10);
+            ->select('bookings.*', 'pakets.*', 'category.*');
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('pakets.namapaket', 'like', "%{$search}%")
+                    ->orWhere('category.namacategory', 'like', "%{$search}%")
+                    ->orWhere('bookings.name', 'like', "%{$search}%")
+                    ->orWhere('bookings.email', 'like', "%{$search}%")
+                    ->orWhere('bookings.notlp', 'like', "%{$search}%")
+                    ->orWhere('bookings.tanggal', 'like', "%{$search}%")
+                    ->orWhere('bookings.jam', 'like', "%{$search}%");
+            });
+        }
+
+        $data = $query->paginate(10);
 
         return view('booking.index', compact('data'));
     }

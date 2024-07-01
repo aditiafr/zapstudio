@@ -12,9 +12,17 @@ class PaketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $paket = Paket::all();
+        $search = $request->input('search');
+
+        if ($search) {
+            $paket = Paket::where('namapaket', 'like', "%{$search}%")
+                ->orWhere('id_paket', 'like', "%{$search}%")
+                ->get();
+        } else {
+            $paket = Paket::all();
+        }
 
         return view('paket.index', compact('paket'));
     }
