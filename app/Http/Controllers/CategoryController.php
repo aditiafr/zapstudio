@@ -19,18 +19,16 @@ class CategoryController extends Controller
         $search = $request->input('search');
         $category = Category::all();
 
+        $query = DB::table('category')
+            ->join('pakets', 'pakets.id_paket', '=', 'category.id_paket');
+
         if ($search) {
-            $data = DB::table('category')
-                ->join('pakets', 'pakets.id_paket', '=', 'category.id_paket')
-                ->where('pakets.namapaket', 'like', "%{$search}%")
+            $query->where('pakets.namapaket', 'like', "%{$search}%")
                 ->orWhere('category.namacategory', 'like', "%{$search}%")
-                ->orWhere('category.harga', 'like', "%{$search}%")
-                ->get();
-        } else {
-            $data = DB::table('category')
-                ->join('pakets', 'pakets.id_paket', '=', 'category.id_paket')
-                ->get();
+                ->orWhere('category.harga', 'like', "%{$search}%");
         }
+
+        $data = $query->paginate(10);
 
         return view('category.index', compact('category', 'data'));
     }

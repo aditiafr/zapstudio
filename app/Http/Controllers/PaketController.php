@@ -16,13 +16,17 @@ class PaketController extends Controller
     {
         $search = $request->input('search');
 
+        // Start with a query builder instance
+        $query = Paket::query();
+
         if ($search) {
-            $paket = Paket::where('namapaket', 'like', "%{$search}%")
-                ->orWhere('id_paket', 'like', "%{$search}%")
-                ->get();
-        } else {
-            $paket = Paket::all();
+            // Apply search filters
+            $query->where('namapaket', 'like', "%{$search}%")
+                ->orWhere('id_paket', 'like', "%{$search}%");
         }
+
+        // Get the paginated results
+        $paket = $query->paginate(10);
 
         return view('paket.index', compact('paket'));
     }
@@ -135,7 +139,7 @@ class PaketController extends Controller
     {
         $paket->delete();
 
-        return view('paket.index')
+        return redirect()->route('paket.index')
             ->with('success', 'Paket deleted successfuly');
     }
 }

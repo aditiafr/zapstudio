@@ -21,6 +21,10 @@
             <i class="fa fa-address-book mr-3"></i>
             Booking
         </a>
+        <a href="{{ route('kritiksaran.index') }}" class="flex items-center {{ Request::is('kritiksaran') ? 'active-nav-link' : '' }} text-white py-4 pl-6 nav-item">
+            <i class="fa fa-paper-plane mr-3"></i>
+            Kritik dan Saran
+        </a>
     </nav>
     <!-- <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
         <i class="fas fa-arrow-circle-up mr-3"></i>

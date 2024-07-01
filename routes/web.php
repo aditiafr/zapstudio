@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\KritikSaranController;
 use Illuminate\Support\Facades\Route;
 // routes/web.php
 use App\Http\Controllers\PageController;
@@ -40,6 +41,12 @@ Route::resource('paket', PaketController::class);
 Route::resource('category', CategoryController::class);
 
 Route::resource('dashboard', DashboardController::class);
+
+Route::resource('home', HomeController::class);
+
+Route::resource('kritiksaran', KritikSaranController::class);
+Route::delete('/kritiksaran/{kritiksaran}', [KritikSaranController::class, 'destroy'])->name('kritiksaran.destroy');
+
 
 // Route::resource('userbooking', UserBookingController::class);
 

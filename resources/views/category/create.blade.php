@@ -54,8 +54,10 @@
         </div>
 
         <div class="flex justify-end gap-2 pt-4">
-            <button class="bg-slate-200 py-2 px-4 rounded">Cancel</button>
-            <button type="submit" class="bg-blue-500 py-2 px-4 rounded text-white">Submit</button>
+            <a href="{{route('category.index')}}">
+                <button type="button" class="bg-slate-200 hover:bg-slate-300 py-2 px-4 rounded">Cancel</button>
+            </a>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded text-white">Submit</button>
         </div>
     </form>
 </div>

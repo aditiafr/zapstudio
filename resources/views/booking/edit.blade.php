@@ -13,6 +13,8 @@
         @csrf
         @method('PUT')
 
+        <p>{{$booking->id_category}}</p>
+
         <div class="grid grid-cols-1 gap-6">
 
             <div class="mb-2">
@@ -59,145 +61,145 @@
                         </label>
                         <ul id="timetable" class="grid w-full grid-cols-4 gap-2">
                             <li>
-                                <input type="radio" id="10:00" value="10:00" class="hidden peer" name="jam">
+                                <input type="radio" id="10:00" value="10:00" class="hidden peer" name="jam" {{ $booking->jam == '10:00:00' ? 'checked' : '' }}>
                                 <label for="10:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     10:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="10:30" value="10:30" class="hidden peer" name="jam">
+                                <input type="radio" id="10:30" value="10:30" class="hidden peer" name="jam" {{ $booking->jam == '10:30:00' ? 'checked' : '' }}>
                                 <label for="10:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     10:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="11:00" value="11:00" class="hidden peer" name="jam">
+                                <input type="radio" id="11:00" value="11:00" class="hidden peer" name="jam" {{ $booking->jam == '11:00:00' ? 'checked' : '' }}>
                                 <label for="11:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     11:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="11:30" value="11:30" class="hidden peer" name="jam">
+                                <input type="radio" id="11:30" value="11:30" class="hidden peer" name="jam" {{ $booking->jam == '11:30:00' ? 'checked' : '' }}>
                                 <label for="11:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     11:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="12:00" value="12:00" class="hidden peer" name="jam">
+                                <input type="radio" id="12:00" value="12:00" class="hidden peer" name="jam" {{ $booking->jam == '12:00:00' ? 'checked' : '' }}>
                                 <label for="12:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     12:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="12:30" value="12:30" class="hidden peer" name="jam">
+                                <input type="radio" id="12:30" value="12:30" class="hidden peer" name="jam" {{ $booking->jam == '12:30:00' ? 'checked' : '' }}>
                                 <label for="12:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     12:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="13:00" value="13:00" class="hidden peer" name="jam">
+                                <input type="radio" id="13:00" value="13:00" class="hidden peer" name="jam" {{ $booking->jam == '13:00:00' ? 'checked' : '' }}>
                                 <label for="13:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     13:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="13:30" value="13:30" class="hidden peer" name="jam">
+                                <input type="radio" id="13:30" value="13:30" class="hidden peer" name="jam" {{ $booking->jam == '13:30:00' ? 'checked' : '' }}>
                                 <label for="13:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     13:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="14:00" value="14:00" class="hidden peer" name="jam">
+                                <input type="radio" id="14:00" value="14:00" class="hidden peer" name="jam" {{ $booking->jam == '14:00:00' ? 'checked' : '' }}>
                                 <label for="14:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     14:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="14:30" value="14:30" class="hidden peer" name="jam">
+                                <input type="radio" id="14:30" value="14:30" class="hidden peer" name="jam" {{ $booking->jam == '14:30:00' ? 'checked' : '' }}>
                                 <label for="14:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     14:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="15:00" value="15:00" class="hidden peer" name="jam">
+                                <input type="radio" id="15:00" value="15:00" class="hidden peer" name="jam" {{ $booking->jam == '15:00:00' ? 'checked' : '' }}>
                                 <label for="15:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     15:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="15:30" value="15:30" class="hidden peer" name="jam">
+                                <input type="radio" id="15:30" value="15:30" class="hidden peer" name="jam" {{ $booking->jam == '15:30:00' ? 'checked' : '' }}>
                                 <label for="15:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     15:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="16:00" value="16:00" class="hidden peer" name="jam">
+                                <input type="radio" id="16:00" value="16:00" class="hidden peer" name="jam" {{ $booking->jam == '16:00:00' ? 'checked' : '' }}>
                                 <label for="16:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     16:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="16:30" value="16:30" class="hidden peer" name="jam">
+                                <input type="radio" id="16:30" value="16:30" class="hidden peer" name="jam" {{ $booking->jam == '16:30:00' ? 'checked' : '' }}>
                                 <label for="16:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     16:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="17:00" value="17:00" class="hidden peer" name="jam">
+                                <input type="radio" id="17:00" value="17:00" class="hidden peer" name="jam" {{ $booking->jam == '17:00:00' ? 'checked' : '' }}>
                                 <label for="17:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     17:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="17:30" value="17:30" class="hidden peer" name="jam">
+                                <input type="radio" id="17:30" value="17:30" class="hidden peer" name="jam" {{ $booking->jam == '17:30:00' ? 'checked' : '' }}>
                                 <label for="17:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     17:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="18:00" value="18:00" class="hidden peer" name="jam">
+                                <input type="radio" id="18:00" value="18:00" class="hidden peer" name="jam" {{ $booking->jam == '18:00:00' ? 'checked' : '' }}>
                                 <label for="18:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     18:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="18:30" value="18:30" class="hidden peer" name="jam">
+                                <input type="radio" id="18:30" value="18:30" class="hidden peer" name="jam" {{ $booking->jam == '18:30:00' ? 'checked' : '' }}>
                                 <label for="18:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     18:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="19:00" value="19:00" class="hidden peer" name="jam">
+                                <input type="radio" id="19:00" value="19:00" class="hidden peer" name="jam" {{ $booking->jam == '19:00:00' ? 'checked' : '' }}>
                                 <label for="19:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     19:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="19:30" value="19:30" class="hidden peer" name="jam">
+                                <input type="radio" id="19:30" value="19:30" class="hidden peer" name="jam" {{ $booking->jam == '19:30:00' ? 'checked' : '' }}>
                                 <label for="19:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     19:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="20:00" value="20:00" class="hidden peer" name="jam">
+                                <input type="radio" id="20:00" value="20:00" class="hidden peer" name="jam" {{ $booking->jam == '20:00:00' ? 'checked' : '' }}>
                                 <label for="20:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     20:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="20:30" value="20:30" class="hidden peer" name="jam">
+                                <input type="radio" id="20:30" value="20:30" class="hidden peer" name="jam" {{ $booking->jam == '20:30:00' ? 'checked' : '' }}>
                                 <label for="20:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     20:30
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="21:00" value="21:00" class="hidden peer" name="jam">
+                                <input type="radio" id="21:00" value="21:00" class="hidden peer" name="jam" {{ $booking->jam == '21:00:00' ? 'checked' : '' }}>
                                 <label for="21:00" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     21:00
                                 </label>
                             </li>
                             <li>
-                                <input type="radio" id="21:30" value="21:30" class="hidden peer" name="jam">
+                                <input type="radio" id="21:30" value="21:30" class="hidden peer" name="jam" {{ $booking->jam == '21:30:00' ? 'checked' : '' }}>
                                 <label for="21:30" class="inline-flex items-center justify-center w-full p-2 text-sm font-medium text-center bg-white border rounded-lg cursor-pointer text-blue-600 border-blue-600 dark:hover:text-white dark:border-blue-500 dark:peer-checked:border-blue-500 peer-checked:border-blue-600 peer-checked:bg-blue-600 hover:text-white peer-checked:text-white hover:bg-blue-500 dark:text-blue-500 dark:bg-gray-900 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:peer-checked:bg-blue-500">
                                     21:30
                                 </label>
@@ -234,8 +236,10 @@
         </div>
 
         <div class="flex justify-end gap-2 pt-4">
-            <button class="bg-slate-200 py-2 px-4 rounded">Cancel</button>
-            <button type="submit" class="bg-blue-500 py-2 px-4 rounded text-white">Submit</button>
+            <a href="{{route('booking.index')}}">
+                <button type="button" class="bg-slate-200 hover:bg-slate-300 py-2 px-4 rounded">Cancel</button>
+            </a>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 py-2 px-4 rounded text-white">Submit</button>
         </div>
     </form>
 </div>
