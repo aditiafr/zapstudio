@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Booking;
 use App\Models\Category;
 use App\Models\Paket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -78,6 +79,14 @@ class BookingController extends Controller
             ->with('success', 'Booking successfully.');
     }
 
+    public function saveDate(Request $request)
+    {
+        $tanggal = $request->input('tanggal');
+        $filterTanggal = Booking::where('tanggal', $tanggal)->get();
+        return response()->json($filterTanggal);
+        // return response()->json(['success' => true, 'message' => 'Tanggal berhasil disimpan', 'tanggal' => $filterTanggal]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +96,13 @@ class BookingController extends Controller
     {
         $paket = Paket::all();
 
-        return view('booking.create', compact('paket'));
+        $today = Carbon::today();
+
+        $dataNow = DB::table('bookings')
+            ->whereDate('bookings.tanggal', $today)
+            ->get();
+
+        return view('booking.create', compact('paket', 'dataNow'));
     }
 
     public function filter(Request $request)

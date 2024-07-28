@@ -34,6 +34,7 @@ Route::resource('booking', BookingController::class);
 Route::get('/paket/filter', [BookingController::class, 'filter']);
 Route::get('userbooking', [BookingController::class, 'userBooking']);
 Route::post('userpost', [BookingController::class, 'userPost']);
+Route::post('/api/save-date', [BookingController::class, 'saveDate']);
 
 // PAKET
 Route::resource('paket', PaketController::class);
