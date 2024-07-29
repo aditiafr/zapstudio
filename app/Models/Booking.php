@@ -9,7 +9,7 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $table = 'Bookings';
+    protected $table = 'bookings';
     protected $primaryKey = 'id_booking';
 
     protected $fillable = [
